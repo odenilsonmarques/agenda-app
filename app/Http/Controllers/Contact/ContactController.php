@@ -7,6 +7,8 @@ use App\Http\Requests\StoreUpdateContactFormRequest;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\returnSelf;
+
 class ContactController extends Controller
 {
     //metodo para chamar o formulário de contato
@@ -35,6 +37,23 @@ class ContactController extends Controller
         return view('contacts.index', compact('contacts'));
     }
 
+    //metodo para excluir um contato
+    public function destroy($id){
+
+        // Recupera o registro do contato correspondente ao ID fornecido ou lança uma exceção se não existir
+        $contacts = Contact::findOrFail($id);
+
+        $contacts->delete();
+
+        return redirect()->route('contacts.index')->with('success', 'Contato excluído com sucesso !');
+    }
+
+    //Este método irá buscar o contato pelo ID e exibir um formulário para edição.
+    public function edit($id){
+        // Busca o contato pelo ID ou lança um erro 404 se não for encontrado.
+        $contact = Contact::findOrFail($id);
+        return view('contacts.edit', compact('contact'));
+    }
 
 
 }
