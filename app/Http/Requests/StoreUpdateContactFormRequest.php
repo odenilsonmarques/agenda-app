@@ -27,8 +27,10 @@ class StoreUpdateContactFormRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:100'],
-            'email' => ['required', 'string', 'unique:contacts'],
-            'telefone' => ['required', 'string', 'max:15', 'unique:contacts'],
+            // estamos usando o $this->route('id')] para igonar os campos atuais no form de edição. Email e telefone que estão como unique
+            'email' => ['required', 'string', 'unique:contacts,email,' . $this->route('id')],
+            'telefone' => ['required', 'string', 'max:15', 'unique:contacts,telefone,' . $this->route('id'), 'regex:/^[0-9]{10,15}$/'],
+
         ];
     }
 
@@ -42,6 +44,8 @@ class StoreUpdateContactFormRequest extends FormRequest
             'email.unique' => 'O email informado já está cadastrado',
             'telefone.required' => 'O telefone é obrigatório.',
             'telefone.unique' => 'O telefone informado já está cadastrado',
+            'telefone.regex' => 'O telefone deve conter apenas números e ter entre 10 e 15 dígitos.',
+            'telefone.max' => 'O telefone deve ter no máximo 15 caracteres.',
         ];
     }
 }

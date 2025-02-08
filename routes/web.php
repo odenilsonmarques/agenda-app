@@ -26,5 +26,8 @@ Route::get('contacts/create', [ContactController::class, 'create'])->name('conta
 Route::post('contacts', [ContactController::class, 'store'])->name('contacts.store');
 Route:: delete('contacts/{id}', [ContactController::class, 'destroy'])->name('contacts.destroy');
 
-// Rota para exibir o formulário de edição
+// Rota para exibir a view que contém o formulário de edição
 Route::get('contacts/{id}/edit', [ContactController::class, 'edit'])->name('contacts.edit');
+
+ //Nessa Rota usamos o put para permitir a atualiçõo do registro
+Route::put('contacts/{id}', [ContactController::class, 'update'])->name('contacts.update');

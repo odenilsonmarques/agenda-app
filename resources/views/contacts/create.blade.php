@@ -20,5 +20,4 @@
 
    <button type="submit">Enviar</button>
    <a href="{{route('index')}}">Cancelar</a>
-
 </form>

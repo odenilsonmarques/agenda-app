@@ -5,7 +5,6 @@
     <p>{{ session('success') }}</p>
 @endif
 
-
 <table border="1">
     <thead>
         <tr>
@@ -21,11 +20,14 @@
             <td>{{ $contact->email }}</td>
             <td>{{ $contact->telefone }}</td>
             <td>
+                <a href="{{ route('contacts.edit', $contact->id) }}" style="cursor:pointer;">
+                    Editar
+                </a>
                 <!-- Botão de Deletar -->
                 <form action="{{ route('contacts.destroy', $contact->id) }}" method="POST" style="display: inline;">
                     @csrf
                     @method('DELETE')
-                    <button type="submit"
+                    <button type="submit" style="cursor:pointer;"
                         onclick="return confirm('Tem certeza que deseja deletar este contato?')">Deletar
                     </button>
                 </form>
