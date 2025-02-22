@@ -1,0 +1,17 @@
+html body {
+    background-color: #F8F8FF;
+}
+
+a.custom-btn{
+    background-color: #8e87ff
+}
+
+.type-contact {
+    border-radius: 50%; /* Torna a div completamente redonda */
+    width: 100px; /* Defina um tamanho fixo para garantir um círculo perfeito */
+    height: 100px; /* Igual à largura */
+    display: flex; /* Para centralizar o ícone */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    background-color: #8e87ff;
+}
